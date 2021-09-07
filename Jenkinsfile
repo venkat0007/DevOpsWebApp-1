@@ -45,7 +45,7 @@ node {
 			rm -rf /root/tomcat7/webapps/DevOpsWebApp-*
 
 			echo Step-2: Staging the new package to tomcat server.
-			cp ${WORKSPACE}/target/DevOpsWebApp-*.war /root/tomcat7/webapps
+			cp ${WORKSPACE}/target/DevOpsWebApp-*.war /opt/tomcat/apache-tomcat-9.0.52/webapps/
 		'''
 		
 	}
