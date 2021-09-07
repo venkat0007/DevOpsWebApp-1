@@ -9,7 +9,7 @@
 */
 
 
-node any {
+node {
 	stage('checkout'){
 		checkout scm
 	}
