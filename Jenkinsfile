@@ -27,7 +27,7 @@ node {
 	}
 	stage('deploy-to-tomcat'){
 		print 'deploy the package to tomcat server to run application'
-		
+		/*
 		sh'''
 			echo "Removing the existing package from tomcat server"
 			ssh ec2-user@3.89.232.247 rm -rf $HOME/tomcat9/webapps/DevOpsWebApp*
@@ -36,7 +36,7 @@ node {
 			scp target/DevOpsWebApp*.war ec2-user@3.89.232.247:$HOME/tomcat9/webapps/
 
 		'''
-		/*
+		*/
 		sh '''
 			echo Deploy the war to tomcat server.
 
@@ -47,6 +47,6 @@ node {
 			echo Step-2: Staging the new package to tomcat server.
 			cp ${WORKSPACE}/target/DevOpsWebApp-*.war /root/tomcat7/webapps
 		'''
-		*/
+		
 	}
 }
