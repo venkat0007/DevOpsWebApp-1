@@ -20,11 +20,14 @@ node {
 	stage('junit test'){
 		sh"mvn -V clean test"
 	}
-	stage('deploy-to-nexus'){
+	stage('create a package'){
+    		sh "mvn -V clean package"
+	}
+	/*stage('deploy-to-nexus'){
     		print 'deploy the package to nexus'
 		sh"${tool 'maven-3.8.1'}/bin/mvn -V clean package -DreleaseVersion=1.0.${BUILD_NUMBER}" //this command is not deploying to nexus, install nexus and update the command to deploy
 		//sh '"/root/apache-maven-3.5.4/bin/mvn" -V clean deploy'
-	}
+	}*/
 	stage('deploy-to-tomcat'){
 		print 'deploy the package to tomcat server to run application'
 		/*
@@ -41,12 +44,11 @@ node {
 			echo Deploy the war to tomcat server.
 
 			echo Step-1: Removing the existing package
-			rm -rf /root/tomcat7/webapps/DevOpsWebApp-*.war
-			rm -rf /root/tomcat7/webapps/DevOpsWebApp-*
+			rm -rf /root/apache-tomcat-9.0.62/webapps/DevOpsWebApp-*.war
+			rm -rf /root/apache-tomcat-9.0.62/webapps/DevOpsWebApp-*
 
 			echo Step-2: Staging the new package to tomcat server.
-			cp ${WORKSPACE}/target/DevOpsWebApp-*.war /opt/tomcat/apache-tomcat-9.0.52/webapps/
-		'''
+			cp ${WORKSPACE}/target/DevOpsWebApp-*.war /root/apache-tomcat-9.0.62/webapps
 		
 	}
 }
