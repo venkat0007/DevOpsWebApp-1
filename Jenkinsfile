@@ -15,7 +15,7 @@ node {
 	}
 	stage('compile'){
 		
-		sh"${tool 'maven-3.8.1'}/bin/mvn -V clean compile -DreleaseVersion=1.0.${BUILD_NUMBER}"
+		sh"mvn -V clean compile"
 	}
 	stage('junit test'){
 		sh"${tool 'maven-3.8.1'}/bin/mvn -V clean test -DreleaseVersion=1.0.${BUILD_NUMBER}"
